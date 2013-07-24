@@ -10,16 +10,13 @@
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <div id="container" class="container">
-      <header>
+    <div class="pure-g-r" id="layout">
+      <div class="pure-u" id="menu">
         <%= render 'layouts/navigation' %>
-        <%= render 'layouts/messages' %>
-      </header>
-      <div id="main" role="main">
+      </div>
+      <div class="pure-u-1" id="main">
         <%= yield %>
       </div>
-      <footer>
-      </footer>
-    </div> <!--! end of #container -->
+    </div>
   </body>
 </html>

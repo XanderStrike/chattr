@@ -62,6 +62,8 @@ GEM
     multi_json (1.7.7)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
+    purecss-rails (0.2.1)
+      railties (>= 3.2.6, < 5)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -123,6 +125,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  purecss-rails
   quiet_assets
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
