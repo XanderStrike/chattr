@@ -1,4 +1,5 @@
 body {
+    overflow:hidden;
     font-family: sans-serif;
     color: #777;
 }
@@ -119,6 +120,14 @@ aside {
  */
 
 /* The content div is placed as a wrapper around all the docs */
+.board {
+    padding-top:40px;
+    margin: 0 auto;
+    width: 95%;
+    height: 100px;
+    margin-bottom:50px;
+    overflow-y:scroll;
+}
 .content {
     padding-top:40px;
     margin: 0 auto;

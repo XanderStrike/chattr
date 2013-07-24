@@ -1,0 +1,35 @@
+<div class="header">
+	<h1><%= @board.name %></h1>
+	<h2><%= @board.desc %></h2>
+</div>
+
+<div class="board">
+	<% @messages.each do |m| %>
+		<%= m.username %>: <%= m.content %><br>
+	<% end %>
+
+	<%= form_for(Message.new, html: {class: "pure-form"}) do |f| %>
+		<fieldset style="width:100%">
+			<%= hidden_field_tag :board, @board.id %>
+			<%= hidden_field_tag :owner, current_user.id %>
+      <%= f.text_field :content, placeholder: "Hello world!", style: "width:85%", autofocus:true %>
+    	<%= f.submit "Send", class: "pure-button pure-button-primary", style:"margin-top:20px;" %>
+ 		</fieldset>
+	<% end %>
+</div>
+
+<script>
+	var offset = 220;
+
+	$(document).ready(function () {
+		var height = $(window).height();
+		$('.board').css('height', height-offset);
+		$('.board').scrollTop($('.board')[0].scrollHeight)
+	});
+
+	$(window).resize(function () {
+		var height = $(window).height();
+		$('.board').css('height', height-offset);
+		$('.board').scrollTop($('.board')[0].scrollHeight)
+	});
+</script>

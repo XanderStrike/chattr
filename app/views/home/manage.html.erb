@@ -1,0 +1,39 @@
+<div class="header">
+	<h1>Manage</h1>
+	<h2>Management page for administrators</h2>
+</div>
+
+<div class="content">
+	<h3>Boards</h3>
+	<table class="pure-table">
+		<thead>
+		  <tr>
+		    <th>Name</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		</thead>
+
+	<% @boards.each do |board| %>
+	  <tr>
+	    <td><%= board.name %></td>
+	    <td><%= link_to 'Open', board %></td>
+	    <td><%= link_to 'Edit', edit_board_path(board) %></td>
+	    <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+	</table><br>
+	<%= link_to 'New Board', new_board_path %>
+
+	<h3>Users</h3>
+	<ul class="users">
+	  <% @users.each do |user| %>
+	    <li>
+	      <%= link_to user.name, user %> signed up <%= user.created_at.to_date %>
+	    </li>
+	  <% end %>
+	</ul>
+
+
+</div> 

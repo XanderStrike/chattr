@@ -2,6 +2,15 @@
   <a class="pure-menu-heading" href="/">Chattr</a>
   <ul>
     <% if user_signed_in? %>
+      <% Board.all.each do |b| %>
+        <li><%= link_to b.name, b %></li>
+      <% end %>
+      <a class="pure-menu-heading"></a>
+      <% if current_user.admin %>
+      <li>
+        <a href="/manage">Manage</a>
+      </li>
+      <% end %>
       <li>
       <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
       </li>
