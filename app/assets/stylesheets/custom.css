@@ -120,6 +120,7 @@ aside {
 
 /* The content div is placed as a wrapper around all the docs */
 .content {
+    padding-top:40px;
     margin: 0 auto;
     width: 70%;
     margin-bottom:50px;
@@ -154,37 +155,6 @@ aside {
         padding-left: 1.5em;
     }
 
-
-
-/* --------------------------
- * Footer Module Styles
- * --------------------------
-*/
-.legal {
-    font-size: 80%;
-    border-top: 1px solid #eee;
-    padding: 0.5em 0;
-    background: rgb(250, 250, 250);
-}
-
-    .legal-license,
-    .legal-copyright {
-        margin: 0;
-    }
-
-    .legal-copyright,
-    .legal-links {
-        text-align: right;
-    }
-
-    .legal-links {
-        list-style: none;
-        margin: 0;
-    }
-
-    .legal-logo {
-        text-align: center;
-    }
 
 /* --------------------------
  * Main Navigation Bar Styles
@@ -266,35 +236,6 @@ aside {
             background: none;
         }
 
-
-
-/* ---------------------
- * Smaller Module Styles
- * ---------------------
-*/
-
-/* example code blocks */
-.example-snippet {
-    margin: 2em 0;
-    font-size: 85%;
-}
-
-/* green call to action button class */
-.notice {
-    background-color: #61B842;
-    color: white;
-}
-
-.pure-button {
-    font-family: inherit;
-}
-a.pure-button-primary {
-    color: white;
-}
-
-.muted {
-    color: #ccc;
-}
 
 /* --------------------------
  * Responsive Styles
@@ -420,4 +361,9 @@ pre .attribute, pre .variable, pre .support {
 pre .string, pre .support.value  {
     font-weight: normal;
     color: #3b8bba; /* skinbuilder block-mine-text-low with #1f8dd6 as primary */
+}
+
+
+.center {
+    text-align:center;
 }
