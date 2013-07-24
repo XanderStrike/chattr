@@ -50,6 +50,10 @@ dd {
     margin: 0 0 10px 0;
 }
 
+form {
+    text-align:center;
+}
+
 /* --------------------------
  * Layout Styles
  * --------------------------

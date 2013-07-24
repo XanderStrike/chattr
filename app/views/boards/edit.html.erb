@@ -1,12 +1,12 @@
 <div class="header">
 	<h1>Editing <%= @board.name %></h1>
+	<h2>Yeah, I didn't like it either.</h2>
 </div>
 
 <div class="content">
 	<%= render 'form' %>
 	<%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
-
+	<%= link_to 'Back', "/manage" %>
 </div>
 
 
