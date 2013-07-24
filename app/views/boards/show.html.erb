@@ -4,9 +4,14 @@
 </div>
 
 <div class="board">
+	<table>
 	<% @messages.each do |m| %>
-		<%= m.username %>: <%= m.content %><br>
+		<tr>
+			<td style="text-align:right;"><%= m.username %>:&nbsp;&nbsp;</td>
+			<td><%= m.content %></td>
+		</tr>
 	<% end %>
+	</table>
 
 	<%= form_for(Message.new, html: {class: "pure-form"}) do |f| %>
 		<fieldset style="width:100%">
@@ -18,8 +23,14 @@
 	<% end %>
 </div>
 
+<style>
+body {
+	overflow:hidden;
+}
+</style>
+
 <script>
-	var offset = 220;
+	var offset = 190;
 
 	$(document).ready(function () {
 		var height = $(window).height();
