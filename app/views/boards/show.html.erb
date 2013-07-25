@@ -14,7 +14,7 @@
 	<% end %>
 	</table>
 
-	<%= form_for(Message.new, html: {class: "pure-form"}) do |f| %>
+	<%= form_for(Message.new, html: {class: "pure-form"}, remote:true) do |f| %>
 		<fieldset>
 			<%= hidden_field_tag :board, @board.id %>
 			<%= hidden_field_tag :owner, current_user.id %>
@@ -32,6 +32,7 @@ body {
 
 <script>
 	var offset = 190;
+	var board = <%= @board.id %>
 
 	$(document).ready(function () {
 		var height = $(window).height();
@@ -46,6 +47,20 @@ body {
 	});
 
 	window.setInterval(function(){
-		console.log($('#msgtable tr:last td').html())
+		updateChat();
 	}, 1000)
+
+	function updateChat() {
+		var last = $('#msgtable tr:last td').html();
+		var url = '/messages/get/' + board + '/' + last;
+		// console.log(board);
+		$.getJSON(url, function(data) {
+			if (data[0] != undefined) {
+				$.each(data, function(d) {
+					$('#msgtable tr:last').after('<tr><td>' + data[d].id + '</td><td>' + data[d].username + '</td><td>' + data[d].content + '</td></tr>') 
+					$('.board').scrollTop($('.board')[0].scrollHeight)
+				});
+			}
+		});
+	}
 </script>

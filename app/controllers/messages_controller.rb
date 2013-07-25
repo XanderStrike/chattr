@@ -16,17 +16,10 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     @message.owner = params[:owner]
+    @message.username = User.find(params[:owner]).name
     @message.board = params[:board]
 
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to Board.find(params[:board]), notice: 'Message was successfully created.' }
-        format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { redirect_to Board.find(params[:board]), notice: 'There was an error saving your message.' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
+    @message.save
   end
 
   # DELETE /messages/1
