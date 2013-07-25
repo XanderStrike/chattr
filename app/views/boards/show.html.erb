@@ -4,6 +4,7 @@
 </div>
 
 <div class="board">
+
 	<table id="msgtable">
 	<% @messages.each do |m| %>
 		<tr>
@@ -22,6 +23,7 @@
     	<%= f.submit "Send", class: "pure-button pure-button-primary", style:"margin-top:20px;" %>
  		</fieldset>
 	<% end %>
+
 </div>
 
 <style>
@@ -32,28 +34,25 @@ body {
 
 <script>
 	var offset = 190;
+	var interval = 500;
 	var board = <%= @board.id %>
 
+	// Set height of .board to a function of the size of the window, keep scrolled to bottom.
 	$(document).ready(function () {
 		var height = $(window).height();
 		$('.board').css('height', height-offset);
 		$('.board').scrollTop($('.board')[0].scrollHeight)
 	});
-
 	$(window).resize(function () {
 		var height = $(window).height();
 		$('.board').css('height', height-offset);
 		$('.board').scrollTop($('.board')[0].scrollHeight)
 	});
 
-	window.setInterval(function(){
-		updateChat();
-	}, 1000)
-
+	// Auto updator, check for new messages and appends them to the table
 	function updateChat() {
 		var last = $('#msgtable tr:last td').html();
 		var url = '/messages/get/' + board + '/' + last;
-		// console.log(board);
 		$.getJSON(url, function(data) {
 			if (data[0] != undefined) {
 				$.each(data, function(d) {
@@ -63,4 +62,8 @@ body {
 			}
 		});
 	}
+
+	// Run the update every <interval> ms
+	window.setInterval(function() { updateChat(); }, interval)
+
 </script>

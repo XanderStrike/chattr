@@ -10,4 +10,6 @@ Chattr::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+
+  match "*a", :to => "home#404"
 end
