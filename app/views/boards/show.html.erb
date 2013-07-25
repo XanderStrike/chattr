@@ -19,6 +19,7 @@
 		<fieldset>
 			<%= hidden_field_tag :board, @board.id %>
 			<%= hidden_field_tag :owner, current_user.id %>
+			<%= hidden_field_tag :username, current_user.name %>
       <%= f.text_field :content, placeholder: "Hello world!", style: "width:85%", autofocus:true %>
     	<%= f.submit "Send", class: "pure-button pure-button-primary", style:"margin-top:20px;" %>
  		</fieldset>

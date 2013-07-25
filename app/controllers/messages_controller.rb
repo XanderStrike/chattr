@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     @message.owner = params[:owner]
-    @message.username = User.find(params[:owner]).name
+    @message.username = params[:username]
     @message.board = params[:board]
 
     @message.save
