@@ -3,8 +3,8 @@ Chattr::Application.routes.draw do
   authenticated :user do
     root :to => 'home#index'
     match '/manage', to: 'home#manage'
-    resources :messages
-    resources :boards
+    resources :messages, only: [:create]
+    resources :boards, only: [:show, :new, :edit, :create, :update, :destroy]
   end
 
   root :to => "home#index"
