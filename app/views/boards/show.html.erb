@@ -7,8 +7,8 @@
 	<table id="msgtable">
 	<% @messages.each do |m| %>
 		<tr>
-			<td style="padding-right:10px;color:#ccc"><%= m.id %></td>
-			<td style="text-align:right;padding-right:10px"><%= m.username %>:</td>
+			<td class='id'><%= m.id %></td>
+			<td class='name'><%= m.username %>:</td>
 			<td><%= m.content %></td>
 		</tr>
 	<% end %>
@@ -57,7 +57,7 @@ body {
 		$.getJSON(url, function(data) {
 			if (data[0] != undefined) {
 				$.each(data, function(d) {
-					$('#msgtable tr:last').after('<tr><td>' + data[d].id + '</td><td>' + data[d].username + '</td><td>' + data[d].content + '</td></tr>') 
+					$('#msgtable tr:last').after('<tr><td class="id">' + data[d].id + '</td><td class="name">' + data[d].username + ':</td><td>' + data[d].content + '</td></tr>') 
 					$('.board').scrollTop($('.board')[0].scrollHeight)
 				});
 			}
