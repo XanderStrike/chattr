@@ -40,4 +40,8 @@ class MessagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def get
+    render :json => Message.where(board: params[:id]).where("id > ?", params[:af])
+  end
 end
