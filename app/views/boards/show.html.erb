@@ -50,18 +50,23 @@ body {
 		$('.board').scrollTop($('.board')[0].scrollHeight)
 	});
 
-	// Auto updator, check for new messages and appends them to the table
+	// Auto updater, check for new messages and posts them
 	function updateChat() {
 		var last = $('#msgtable tr:last td').html();
 		var url = '/messages/get/' + board + '/' + last;
 		$.getJSON(url, function(data) {
-			if (data[0] != undefined) {
+			if (data[0] != undefined && data[0].id != $('#msgtable tr:last td').html()) {
 				$.each(data, function(d) {
-					$('#msgtable tr:last').after('<tr><td class="id">' + data[d].id + '</td><td class="name">' + data[d].username + ':</td><td>' + data[d].content + '</td></tr>') 
-					$('.board').scrollTop($('.board')[0].scrollHeight)
+					 post(data[d].id, data[d].username, data[d].content)
 				});
 			}
 		});
+	}
+
+	// Append message to bottom of table
+	function post(id, name, content) {
+		$('#msgtable tr:last').after('<tr><td class="id">' + id + '</td><td class="name">' + name + ':</td><td>' + content + '</td></tr>')
+		$('.board').scrollTop($('.board')[0].scrollHeight)
 	}
 
 	// Run the update every <interval> ms
