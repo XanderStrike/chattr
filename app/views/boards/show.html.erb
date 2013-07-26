@@ -65,6 +65,16 @@ body {
 	}
 
 	// Run the update every <interval> ms
-	window.setInterval(function() { updateChat(); }, interval)
+	var checker = window.setInterval(function() { updateChat(); }, interval)
+
+	// Run updates at 1/5th speed when window is not in focus
+	$(window).blur(function() {
+		clearInterval(checker);
+		checker = window.setInterval(function() { updateChat(); }, interval*5)
+	})
+	$(window).focus(function() {
+		clearInterval(checker);
+		checker = window.setInterval(function() { updateChat(); }, interval)
+	})
 
 </script>

@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @message.username = params[:username]
     @message.board = params[:board]
 
-    @message.save
+    @message.save unless @message.content.blank?
   end
 
   def get
