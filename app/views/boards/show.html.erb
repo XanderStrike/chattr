@@ -1,3 +1,5 @@
+<%= title @board.name %>
+
 <div class="header">
 	<h1><%= @board.name %></h1>
 	<h2><%= @board.desc %></h2>
@@ -37,6 +39,7 @@ body {
 	var offset = 190;
 	var interval = 500;
 	var board = <%= @board.id %>
+	var title = '<%= @board.name %> - Chattr'
 
 	// Set height of .board to a function of the size of the window, keep scrolled to bottom.
 	$(document).ready(function () {
