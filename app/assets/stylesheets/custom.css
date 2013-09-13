@@ -103,6 +103,11 @@ dd {
         color: #ccc;
     }
 
+.mobile-header {
+    text-align:center;
+    padding: 1em;
+}
+
 aside {
     background: #1f8dd6; /* same color as selected state on site menu */
     padding: 0.3em 1em;
@@ -243,6 +248,10 @@ aside {
  * --------------------------
 */
 
+.visible-small {
+    display: none;
+}
+
 @media (max-width: 870px) {
 
     /* Navigation Push Styles */
@@ -271,6 +280,13 @@ aside {
 
     #layout.active .pure-menu-link {
         left: 150px;
+    }
+
+    .hidden-small {
+        display: none;
+    }
+    .visible-small {
+        display: block;
     }
 }
 

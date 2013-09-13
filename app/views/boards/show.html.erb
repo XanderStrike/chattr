@@ -1,8 +1,12 @@
 <%= title @board.name %>
 
-<div class="header">
+<div class="header hidden-small">
 	<h1><%= @board.name %></h1>
 	<h2><%= @board.desc %></h2>
+</div>
+
+<div class="mobile-header visible-small">
+	<b><%= @board.name %></b><br><%= @board.desc %>
 </div>
 
 <div class="board">
@@ -23,7 +27,7 @@
 			<%= hidden_field_tag :owner, current_user.id %>
 			<%= hidden_field_tag :username, current_user.name %>
       <%= f.text_field :content, placeholder: "Hello world!", style: "width:85%", autofocus:true %>
-    	<%= f.submit "Send", class: "pure-button pure-button-primary", style:"margin-top:20px;" %>
+    	<%= f.submit "Send", class: "pure-button pure-button-primary hidden-small", style:"margin-top:20px;" %>
  		</fieldset>
 	<% end %>
 
@@ -36,22 +40,27 @@ body {
 </style>
 
 <script>
-	var offset = 190;
+	var deskoffset = 190;
+	var mobileoffset = 115;
 	var interval = 500;
 	var board = <%= @board.id %>
 	var title = '<%= @board.name %> - Chattr'
 
 	// Set height of .board to a function of the size of the window, keep scrolled to bottom.
 	$(document).ready(function () {
-		var height = $(window).height();
-		$('.board').css('height', height-offset);
-		$('.board').scrollTop($('.board')[0].scrollHeight)
+		resize();
 	});
 	$(window).resize(function () {
+		resize();
+	});
+
+	function resize() {
 		var height = $(window).height();
+		offset = deskoffset;
+		if ($('.header').css('display') === 'none') {offset = mobileoffset};
 		$('.board').css('height', height-offset);
 		$('.board').scrollTop($('.board')[0].scrollHeight)
-	});
+	}
 
 	// Auto updater, check for new messages and posts them
 	function updateChat() {
